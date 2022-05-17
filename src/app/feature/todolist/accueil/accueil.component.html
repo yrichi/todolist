@@ -1,0 +1,20 @@
+<div>
+  <h1>liste de todo</h1>
+  <ul>
+    <li *ngFor="let item of todos"> {{ item.titre }} {{ item.contenu }} <button
+        (click)="editer(item.id)">editer</button><button (click)="supprimer(item.id)">supprimer</button> </li>
+  </ul>
+</div>
+
+
+<form [formGroup]="noteForm">
+  <h1>{{ !!noteForm.get('id').value ? 'editer note' : 'ajouter note'}} de todo</h1>
+  nom du todo
+  <input type="text" formControlName="nom">
+
+  contenu du todo
+  <input type="text" formControlName="contenu">
+
+  <button (click)="saveNote()">Valider</button>
+  <button (click)="reset()">reset</button>
+</form>
